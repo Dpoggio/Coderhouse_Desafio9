@@ -16,6 +16,7 @@ const productos = new Productos()
 const mensajes = new Mensajes()
 
 const { routerProductos } = require(__dirname + '/routers/routerProductos.js')
+const { routerProductosTest } = require(__dirname + '/routers/routerProductosTest.js')
 
 
 /**** Inicio App ****/
@@ -65,6 +66,7 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/productos', routerProductos)
+app.use('/api/productos-test', routerProductosTest)
 
 // Middleware Errores
 app.use((err, req, res, next) => {

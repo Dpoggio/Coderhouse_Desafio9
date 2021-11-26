@@ -1,7 +1,7 @@
 {
-  "name": "coderhouse_desafio7",
+  "name": "coderhouse_desafio9",
   "version": "1.0.0",
-  "description": "Nuestra Primera Base de Datos",
+  "description": "Mocks",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio7.git"
+    "url": "git+https://github.com/Dpoggio/Coderhouse_Desafio9.git"
   },
   "author": "Demian Poggio",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dpoggio/Coderhouse_Desafio7/issues"
+    "url": "https://github.com/Dpoggio/Coderhouse_Desafio9/issues"
   },
-  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio7#readme",
+  "homepage": "https://github.com/Dpoggio/Coderhouse_Desafio9#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4",
