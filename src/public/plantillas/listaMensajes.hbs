@@ -1,0 +1,19 @@
+{{#if mensajes }}
+<div class="table-responsive">
+    <table>
+        {{#each mensajes }}
+        <tr>
+            <td>
+                <b style="color:blue">{{this.mail}}</b> 
+                {{!-- [<span style="color:brown">{{formatDate fecha "dddd DD.MM.YYYY HH:mm"}}</span>]: --}}
+                [<span style="color:brown">{{ formatDate this.fecha }}</span>]:
+                <i style="color:green">{{this.mensaje}}</i>
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+{{ else }}
+<h3 class="alert alert-warning">No hay mensajes</h1>
+{{/if}}
+<br>
