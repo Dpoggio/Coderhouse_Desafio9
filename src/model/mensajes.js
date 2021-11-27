@@ -1,10 +1,19 @@
-const Contenedor = require('../lib/contenedorDB.js')
-const conn = require('../lib/connections.js')
+const Contenedor = require('../lib/contenedorMongo.js')
+const mongoose = require('../lib/mongoConnected.js')
 
-class Mensajes extends Contenedor{
+
+const mensajeSchema = new mongoose.Schema({
+    id: {type: Number },
+    mail: {type: String },
+    mensaje: {type: String },
+    fecha: {type: Date }
+})
+
+class MensajeDaoMongo extends Contenedor{
     constructor(){
-        super(conn.sqlite,'mensajes')
+        const mensajes = mongoose.model('mensajes', mensajeSchema)
+        super(mensajes)
     }
 }
 
-module.exports = Mensajes
+module.exports = MensajeDaoMongo

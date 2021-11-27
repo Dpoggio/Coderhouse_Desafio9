@@ -13,3 +13,5 @@ exports.sqlite = {
     client: 'sqlite3',
     connection: { filename: './DB/ecommerce.db'}
 }
+
+exports.mongoDbURL = "mongodb://localhost:27017/ecommerce"
