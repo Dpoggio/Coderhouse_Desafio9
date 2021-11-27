@@ -80,6 +80,10 @@ app.get('/', (req, res) => {
     res.render('main')
 })
 
+app.get('/productos-test', (req, res) => {
+    res.render('productos-test')
+})
+
 app.use('/api/productos', routerProductos)
 app.use('/api/productos-test', routerProductosTest)
 
