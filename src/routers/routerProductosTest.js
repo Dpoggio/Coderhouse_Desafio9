@@ -1,17 +1,18 @@
 const { Router } = require('express');
 const routerProductosTest = Router();
 
-function getRequestID(req){
-    if (isNaN(req.params.id)) {
-        throw new IdNoNumerico()
-    }
-    const id = parseInt(req.params.id)
-    return id
-}
+const Productos = require('./../model/productosMock.js')
+
+const productos = new Productos()
 
 /**** Rutas ****/
 routerProductosTest.get('/', async (req, res, next) => {  
-    res.json({})
+    try {
+        const listaProductos = await productos.getAll()
+        res.json(listaProductos)    
+    } catch (error) {
+        next(error)
+    }
 })
 
 
