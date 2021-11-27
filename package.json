@@ -1,7 +1,7 @@
 {
   "name": "coderhouse_desafio9",
   "version": "1.0.0",
-  "description": "Mocks",
+  "description": "Mocks y Normalizacion",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
