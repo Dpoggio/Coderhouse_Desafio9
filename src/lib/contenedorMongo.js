@@ -24,7 +24,8 @@ class Contenedor {
      */
     async getAll(){
         try {
-            return await this.collection.find({}, {_id: 0, __v: 0})
+            const lista = await this.collection.find({}, {_id: 0, __v: 0}).lean()
+            return lista
         } catch(error){
             this.#handleError(error)
         }

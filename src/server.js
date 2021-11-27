@@ -3,6 +3,7 @@ const express = require('express')
 const { Server: HttpServer } = require('http')
 const { Server: IOServer } = require('socket.io')
 const handlebars = require('express-handlebars')
+const { normalize, schema } = require("normalizr");
 
 
 /**** CONSTANTES ****/
@@ -24,12 +25,26 @@ const app = express()
 const httpServer = new HttpServer(app)
 const io = new IOServer(httpServer)
 
+// Normalizr
+const authorSchema = new schema.Entity('author', {}, { idAttribute: 'mail' });
+const mensajesSchema = new schema.Entity('mensajes', {
+    mensajes: [ { author: authorSchema } ]
+});
+
+
+async function getMensajes(){
+    const listaMensajes = await mensajes.getAll()
+    const mensajesDenorm = {id: 'mensajes', mensajes: listaMensajes}
+    const mensajesNorm = normalize(mensajesDenorm, mensajesSchema);
+    return mensajesNorm
+}
+
 // Configuracion WebSocket
 io.on('connection', async socket => {
     console.log('Nuevo cliente conectado')
 
     socket.emit('actualizarProductos', await productos.getAll())
-    socket.emit('actualizarMensajes', {id: 'mensajes', mensajes: await mensajes.getAll()})
+    socket.emit('actualizarMensajes', await getMensajes())
 
     socket.on('nuevoProducto', async producto => {
         await productos.save(producto)
@@ -38,7 +53,7 @@ io.on('connection', async socket => {
 
     socket.on('nuevoMensaje', async mensaje => {
         await mensajes.save(mensaje)
-        io.sockets.emit('actualizarMensajes', {id: 'mensajes', mensajes: await mensajes.getAll()})
+        io.sockets.emit('actualizarMensajes', await getMensajes())
     })
 })
 

@@ -2,7 +2,6 @@ const mongoose = require('mongoose')
 const conn = require('./connections.js')
 
 if (mongoose.connection.readyState == 0) {
-    console.log('Conectado')
     mongoose.connect(conn.mongoDbURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -13,8 +12,6 @@ if (mongoose.connection.readyState == 0) {
     mongoDb.once('open', () => {
         console.log('Conectado a la base de datos');
     });
-} else {
-    console.log('Ya esta conectado')
 }
 
 module.exports = mongoose

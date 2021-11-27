@@ -5,7 +5,7 @@ const mongoose = require('../lib/mongoConnected.js')
 const mensajeSchema = new mongoose.Schema({
     id: {type: Number },
     author: {
-        id: {type: String},
+        mail: {type: String},
         nombre: {type: String},
         apellido: {type: String},
         edad: {type: String},

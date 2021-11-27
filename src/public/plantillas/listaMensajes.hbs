@@ -7,13 +7,13 @@
         border-radius: 50%;
     }
 </style>
+<h3>Procentaje de compresion: {{ porcentaje }} %</h3>
 <div class="table-responsive">
     <table>
         {{#each mensajes.mensajes }}
         <tr>
             <td>
-                <b style="color:blue">{{this.author.id}}</b> 
-                {{!-- [<span style="color:brown">{{formatDate fecha "dddd DD.MM.YYYY HH:mm"}}</span>]: --}}
+                <b style="color:blue">{{this.author.mail}}</b> 
                 [<span style="color:brown">{{ formatDate this.fecha }}</span>]:
                 <i style="color:green">{{this.text}}</i>
                 <img src="{{this.author.avatar}}" alt="Avatar" class="avatar">
