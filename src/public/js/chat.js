@@ -26,8 +26,15 @@ socket.on('actualizarMensajes', Mensajes => {
 
 function agregarMensaje(form) {
     const mensaje = {
-        mail: form["mail"].value,
-        mensaje: form["mensaje"].value,
+        author: {
+            id: form["mail"].value,
+            nombre: form["nombre"].value,
+            apellido: form["apellido"].value,
+            edad: form["edad"].value,
+            alias: form["alias"].value,
+            avatar: form["avatar"].value
+        },
+        text: form["mensaje"].value,
         fecha: new Date()
     }
     socket.emit('nuevoMensaje', mensaje);

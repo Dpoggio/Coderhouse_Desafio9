@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 8080
 const ERROR_CODE = 500
 
 /*** Misc ****/
-const Productos = require(__dirname + '/model/productos.js')
+const Productos = require(__dirname + '/model/productoDaoMongo.js')
 const Mensajes = require(__dirname + '/model/mensajes.js')
 const productos = new Productos()
 const mensajes = new Mensajes()
@@ -29,7 +29,7 @@ io.on('connection', async socket => {
     console.log('Nuevo cliente conectado')
 
     socket.emit('actualizarProductos', await productos.getAll())
-    socket.emit('actualizarMensajes', await mensajes.getAll())
+    socket.emit('actualizarMensajes', {id: 'mensajes', mensajes: await mensajes.getAll()})
 
     socket.on('nuevoProducto', async producto => {
         await productos.save(producto)
@@ -38,7 +38,7 @@ io.on('connection', async socket => {
 
     socket.on('nuevoMensaje', async mensaje => {
         await mensajes.save(mensaje)
-        io.sockets.emit('actualizarMensajes', await mensajes.getAll())
+        io.sockets.emit('actualizarMensajes', {id: 'mensajes', mensajes: await mensajes.getAll()})
     })
 })
 

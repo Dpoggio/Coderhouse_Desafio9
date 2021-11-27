@@ -1,13 +1,22 @@
 {{#if mensajes }}
+<style>
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+</style>
 <div class="table-responsive">
     <table>
-        {{#each mensajes }}
+        {{#each mensajes.mensajes }}
         <tr>
             <td>
-                <b style="color:blue">{{this.mail}}</b> 
+                <b style="color:blue">{{this.author.id}}</b> 
                 {{!-- [<span style="color:brown">{{formatDate fecha "dddd DD.MM.YYYY HH:mm"}}</span>]: --}}
                 [<span style="color:brown">{{ formatDate this.fecha }}</span>]:
-                <i style="color:green">{{this.mensaje}}</i>
+                <i style="color:green">{{this.text}}</i>
+                <img src="{{this.author.avatar}}" alt="Avatar" class="avatar">
             </td>
         </tr>
         {{/each}}
